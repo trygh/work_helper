@@ -1,0 +1,15 @@
+.row-fluid
+  .span12
+    - model_class = Company
+    .page-header
+      %h1=t '.title', :default => model_class.model_name.human
+    .row-fluid
+      .span6
+        %p
+          %strong= model_class.human_attribute_name(:name) + ':'
+          %br
+          = @company.name
+.row-fluid
+  .span12
+    .form-actions
+      = link_to t('.back', :default => t("helpers.links.back")), companies_path, :class => 'btn'

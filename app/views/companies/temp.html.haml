@@ -1,0 +1,586 @@
+%fieldset
+  %legend Карточка компании
+  %em#lastModify
+  %input{:id => "frmC[edit_id]", :name => "frmC[edit_id]", :type => "hidden", :value => ""}
+    %table.table_form{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+      %tbody
+        %tr
+          %td{:width => "30"} Название
+          %td
+            %input{:id => "frmC[Name]", :name => "frmC[Name]", :type => "text", :value => ""}/
+          %td Номер контракта
+          %td
+            %input{:id => "frmC[number_contract]", :name => "frmC[number_contract]", :type => "text", :value => ""}/
+        %tr
+          %td Отрасль
+          %td
+            %select{:id => "frmC[activitate]", :name => "frmC[activitate]"}
+              %option{:value => "0"} -------
+              %option{:value => "4"} IT Спациалисты, Интернет
+              %option{:value => "3"} Бухгалтерия
+          %td ID Кабинета
+          %td
+            %input{:id => "frmC[id_cabinet]", :name => "frmC[id_cabinet]", :type => "text", :value => ""}/
+        %tr
+          %td Источник
+          %td{:colspan => "3"}
+            %select{:id => "frmC[istok]", :name => "frmC[istok]", :size => "1"}
+              %option{:value => "0"} -------
+              %option{:value => "5"} Internet
+              %option{:value => "21"} Varo Inform
+        %tr
+          %td Категория клиента
+          %td{:colspan => "3"}
+            %select{:id => "frmC[cat_client]", :name => "frmC[cat_client]"}
+              %option{:value => "13"} Мой клиент
+              %option{:value => "12"} От компании
+        %tr
+          %td Тип клиента
+          %td{:colspan => "3"}
+            %select.frmtype_client{:id => "frmC[type_client]", :name => "frmC[type_client]"}
+              %option{:value => "10"} Дилер
+              %option{:value => "8"} Клиент
+              %option{:value => "11"} поставщик
+              %option{:value => "9"} Потенциал дилер
+              %option{:value => "6"} Потенциальный клиент
+              %option{:value => "7"} Холодный
+            %span#input_type
+        %tr
+          %td Статус клиента
+          %td{:colspan => "3"}
+            %select{:id => "frmC[status_client]", :name => "frmC[status_client]"}
+              %option{:value => "19"} Клиент
+              %option{:value => "20"} Первыи контакт
+              %option{:value => "18"} Переговоры
+        %tr
+          %td{:colspan => "4", :style => "border-bottom: 1px solid gray;"}
+            Контактные данные
+        %tr
+          %td Телефон
+          %td{:colspan => "3"}
+            %input{:id => "frmC[tel_number]", :name => "frmC[tel_number]", :type => "text", :value => ""}
+        %tr
+          %td Факс
+          %td{:colspan => "3"}
+            %input{:id => "frmC[fax]", :name => "frmC[fax]", :type => "text", :value => ""}
+        %tr
+          %td E-mail
+          %td{:colspan => "3"}
+            %input{:id => "frmC[e_mail]", :name => "frmC[e_mail]", :type => "text", :value => ""}
+        %tr
+          %td Skype
+          %td{:colspan => "3"}
+            %input{:id => "frmC[skype]", :name => "frmC[skype]", :type => "text", :value => ""}
+        %tr
+          %td Web Site
+          %td{:colspan => "3"}
+            %input{:id => "frmC[web]", :name => "frmC[web]", :type => "text", :value => ""}
+        %tr
+          %td Facebook
+          %td{:colspan => "3"}
+            %input{:id => "frmC[facebook]", :name => "frmC[facebook]", :type => "text", :value => ""}
+        %tr
+          %td{:colspan => "4", :style => "border-bottom: 1px solid gray;"}
+            Юридический адрес
+        %tr
+          %td Страна
+          %td{:colspan => "3"}
+            %select{:id => "frmC[country]", :name => "frmC[country]", :size => "1"}
+              %option{:value => "0"} --  Любое  --
+              %option{:value => "216"} Абхазия
+              %option{:value => "3"} Австралия
+              %option{:value => "4"} Австрия
+              %option{:value => "5"} Азербайджан
+              %option{:value => "6"} Албания
+              %option{:value => "7"} Алжир
+              %option{:value => "224"} Англия
+              %option{:value => "8"} Ангола
+              %option{:value => "9"} Ангуилья
+              %option{:value => "10"} Андорра
+              %option{:value => "11"} Антигуа и Барбуда
+              %option{:value => "12"} Антильские о-ва
+              %option{:value => "13"} Аргентина
+              %option{:value => "14"} Армения
+              %option{:value => "15"} Арулько
+              %option{:value => "16"} Афганистан
+              %option{:value => "17"} Багамские о-ва
+              %option{:value => "18"} Бангладеш
+              %option{:value => "19"} Барбадос
+              %option{:value => "20"} Бахрейн
+              %option{:value => "21"} Беларусь
+              %option{:value => "22"} Белиз
+              %option{:value => "23"} Бельгия
+              %option{:value => "24"} Бенин
+              %option{:value => "25"} Бермуды
+              %option{:value => "26"} Болгария
+              %option{:value => "27"} Боливия
+              %option{:value => "28"} Босния/Герцеговина
+              %option{:value => "29"} Ботсвана
+              %option{:value => "30"} Бразилия
+              %option{:value => "31"} Британские Виргинские о-ва
+              %option{:value => "32"} Бруней
+              %option{:value => "33"} Буркина Фасо
+              %option{:value => "34"} Бурунди
+              %option{:value => "35"} Бутан
+              %option{:value => "36"} Валлис и Футуна о-ва
+              %option{:value => "37"} Вануату
+              %option{:value => "38"} Великобритания
+              %option{:value => "39"} Венгрия
+              %option{:value => "40"} Венесуэла
+              %option{:value => "41"} Восточный Тимор
+              %option{:value => "42"} Вьетнам
+              %option{:value => "43"} Габон
+              %option{:value => "44"} Гаити
+              %option{:value => "45"} Гайана
+              %option{:value => "46"} Гамбия
+              %option{:value => "47"} Гана
+              %option{:value => "48"} Гваделупа
+              %option{:value => "49"} Гватемала
+              %option{:value => "50"} Гвинея
+              %option{:value => "51"} Гвинея-Бисау
+              %option{:value => "52"} Германия
+              %option{:value => "53"} Гернси о-в
+              %option{:value => "54"} Гибралтар
+              %option{:value => "55"} Гондурас
+              %option{:value => "56"} Гонконг
+              %option{:value => "57"} Гренада
+              %option{:value => "58"} Гренландия
+              %option{:value => "59"} Греция
+              %option{:value => "60"} Грузия
+              %option{:value => "61"} Дания
+              %option{:value => "62"} Джерси о-в
+              %option{:value => "63"} Джибути
+              %option{:value => "64"} Доминиканская республика
+              %option{:value => "65"} Египет
+              %option{:value => "66"} Замбия
+              %option{:value => "67"} Западная Сахара
+              %option{:value => "68"} Зимбабве
+              %option{:value => "69"} Израиль
+              %option{:value => "70"} Индия
+              %option{:value => "71"} Индонезия
+              %option{:value => "72"} Иордания
+              %option{:value => "73"} Ирак
+              %option{:value => "74"} Иран
+              %option{:value => "75"} Ирландия
+              %option{:value => "76"} Исландия
+              %option{:value => "77"} Испания
+              %option{:value => "78"} Италия
+              %option{:value => "79"} Йемен
+              %option{:value => "80"} Кабо-Верде
+              %option{:value => "81"} Казахстан
+              %option{:value => "82"} Камбоджа
+              %option{:value => "83"} Камерун
+              %option{:value => "84"} Канада
+              %option{:value => "85"} Катар
+              %option{:value => "86"} Кения
+              %option{:value => "87"} Кипр
+              %option{:value => "88"} Кирибати
+              %option{:value => "89"} Китай
+              %option{:value => "90"} Колумбия
+              %option{:value => "91"} Коморские о-ва
+              %option{:value => "92"} Конго (Brazzaville)
+              %option{:value => "93"} Конго (Kinshasa)
+              %option{:value => "94"} Коста-Рика
+              %option{:value => "95"} Кот-д'Ивуар
+              %option{:value => "96"} Куба
+              %option{:value => "97"} Кувейт
+              %option{:value => "98"} Кука о-ва
+              %option{:value => "99"} Кыргызстан
+              %option{:value => "100"} Лаос
+              %option{:value => "101"} Латвия
+              %option{:value => "102"} Лесото
+              %option{:value => "103"} Либерия
+              %option{:value => "104"} Ливан
+              %option{:value => "105"} Ливия
+              %option{:value => "106"} Литва
+              %option{:value => "107"} Лихтенштейн
+              %option{:value => "108"} Люксембург
+              %option{:value => "109"} Маврикий
+              %option{:value => "110"} Мавритания
+              %option{:value => "111"} Мадагаскар
+              %option{:value => "112"} Македония
+              %option{:value => "113"} Малави
+              %option{:value => "114"} Малайзия
+              %option{:value => "115"} Мали
+              %option{:value => "116"} Мальдивские о-ва
+              %option{:value => "117"} Мальта
+              %option{:value => "118"} Мартиника о-в
+              %option{:value => "119"} Мексика
+              %option{:value => "120"} Мозамбик
+              %option{:value => "121"} Молдова
+              %option{:value => "122"} Монако
+              %option{:value => "123"} Монголия
+              %option{:value => "124"} Морокко
+              %option{:value => "125"} Мьянма (Бирма)
+              %option{:value => "126"} Мэн о-в
+              %option{:value => "127"} Намибия
+              %option{:value => "128"} Науру
+              %option{:value => "129"} Непал
+              %option{:value => "130"} Нигер
+              %option{:value => "131"} Нигерия
+              %option{:value => "132"} Нидерланды (Голландия)
+              %option{:value => "133"} Никарагуа
+              %option{:value => "134"} Новая Зеландия
+              %option{:value => "135"} Новая Каледония о-в
+              %option{:value => "136"} Норвегия
+              %option{:value => "137"} Норфолк о-в
+              %option{:value => "138"} О.А.Э.
+              %option{:value => "139"} Оман
+              %option{:value => "140"} Пакистан
+              %option{:value => "141"} Панама
+              %option{:value => "142"} Папуа Новая Гвинея
+              %option{:value => "143"} Парагвай
+              %option{:value => "144"} Перу
+              %option{:value => "145"} Питкэрн о-в
+              %option{:value => "146"} Польша
+              %option{:value => "147"} Португалия
+              %option{:value => "148"} Пуэрто Рико
+              %option{:value => "149"} Реюньон
+              %option{:value => "1"} Россия
+              %option{:value => "150"} Руанда
+              %option{:value => "151"} Румыния
+              %option{:value => "153"} Сальвадор
+              %option{:value => "154"} Самоа
+              %option{:value => "155"} Сан-Марино
+              %option{:value => "156"} Сан-Томе и Принсипи
+              %option{:value => "157"} Саудовская Аравия
+              %option{:value => "158"} Свазиленд
+              %option{:value => "159"} Святая Люсия
+              %option{:value => "160"} Святой Елены о-в
+              %option{:value => "226"} Северная Ирландия
+              %option{:value => "161"} Северная Корея
+              %option{:value => "162"} Сейшеллы
+              %option{:value => "163"} Сен-Пьер и Микелон
+              %option{:value => "164"} Сенегал
+              %option{:value => "165"} Сент Китс и Невис
+              %option{:value => "166"} Сент-Винсент и Гренадины
+              %option{:value => "218"} Сербия
+              %option{:value => "167"} Сербия и Черногория
+              %option{:value => "168"} Сингапур
+              %option{:value => "169"} Сирия
+              %option{:value => "170"} Словакия
+              %option{:value => "171"} Словения
+              %option{:value => "172"} Соломоновы о-ва
+              %option{:value => "173"} Сомали
+              %option{:value => "174"} Судан
+              %option{:value => "175"} Суринам
+              %option{:value => "152"} США
+              %option{:value => "176"} Сьерра-Леоне
+              %option{:value => "177"} Таджикистан
+              %option{:value => "179"} Таиланд
+              %option{:value => "178"} Тайвань
+              %option{:value => "180"} Танзания
+              %option{:value => "181"} Того
+              %option{:value => "182"} Токелау о-ва
+              %option{:value => "183"} Тонга
+              %option{:value => "184"} Тринидад и Тобаго
+              %option{:value => "185"} Тувалу
+              %option{:value => "186"} Тунис
+              %option{:value => "187"} Туркменистан
+              %option{:value => "188"} Туркс и Кейкос
+              %option{:value => "189"} Турция
+              %option{:value => "190"} Уганда
+              %option{:value => "191"} Узбекистан
+              %option{:value => "2"} Украина
+              %option{:value => "192"} Уругвай
+              %option{:value => "225"} Уэльс
+              %option{:value => "193"} Фарерские о-ва
+              %option{:value => "194"} Фиджи
+              %option{:value => "195"} Филиппины
+              %option{:value => "196"} Финляндия
+              %option{:value => "197"} Франция
+              %option{:value => "198"} Французская Гвинея
+              %option{:value => "199"} Французская Полинезия
+              %option{:value => "200"} Хорватия
+              %option{:value => "201"} Чад
+              %option{:value => "217"} Черногория
+              %option{:value => "202"} Чехия
+              %option{:value => "203"} Чили
+              %option{:value => "204"} Швейцария
+              %option{:value => "205"} Швеция
+              %option{:value => "227"} Шотландия
+              %option{:value => "206"} Шри-Ланка
+              %option{:value => "207"} Эквадор
+              %option{:value => "208"} Экваториальная Гвинея
+              %option{:value => "209"} Эритрея
+              %option{:value => "210"} Эстония
+              %option{:value => "211"} Эфиопия
+              %option{:value => "212"} ЮАР
+              %option{:value => "213"} Южная Корея
+              %option{:value => "219"} Южная Осетия
+              %option{:value => "214"} Ямайка
+              %option{:value => "215"} Япония
+        %tr
+          %td Город
+          %td{:colspan => "3"}
+            %input{:id => "frmC[oras]", :name => "frmC[oras]", :type => "text", :value => ""}
+        %tr
+          %td Индекс
+          %td{:colspan => "3"}
+            %input{:id => "frmC[index]", :name => "frmC[index]", :type => "text", :value => ""}
+        %tr
+          %td Улица
+          %td
+            %input{:id => "frmC[strada]", :name => "frmC[strada]", :type => "text", :value => ""}
+          %td Номер дома
+          %td
+            %input{:id => "frmC[numarul]", :name => "frmC[numarul]", :type => "text", :value => ""}
+        %tr
+          %td{:colspan => "4", :style => "border-bottom: 1px solid gray;"}
+            Адрес фактурации
+        %tr
+          %td Страна
+          %td{:colspan => "3"}
+            %select{:id => "frmC[country_f]", :name => "frmC[country_f]", :size => "1"}
+              %option{:value => "0"} --  Любое  --
+              %option{:value => "216"} Абхазия
+              %option{:value => "3"} Австралия
+              %option{:value => "4"} Австрия
+              %option{:value => "5"} Азербайджан
+              %option{:value => "6"} Албания
+              %option{:value => "7"} Алжир
+              %option{:value => "224"} Англия
+              %option{:value => "8"} Ангола
+              %option{:value => "9"} Ангуилья
+              %option{:value => "10"} Андорра
+              %option{:value => "11"} Антигуа и Барбуда
+              %option{:value => "12"} Антильские о-ва
+              %option{:value => "13"} Аргентина
+              %option{:value => "14"} Армения
+              %option{:value => "15"} Арулько
+              %option{:value => "16"} Афганистан
+              %option{:value => "17"} Багамские о-ва
+              %option{:value => "18"} Бангладеш
+              %option{:value => "19"} Барбадос
+              %option{:value => "20"} Бахрейн
+              %option{:value => "21"} Беларусь
+              %option{:value => "22"} Белиз
+              %option{:value => "23"} Бельгия
+              %option{:value => "24"} Бенин
+              %option{:value => "25"} Бермуды
+              %option{:value => "26"} Болгария
+              %option{:value => "27"} Боливия
+              %option{:value => "28"} Босния/Герцеговина
+              %option{:value => "29"} Ботсвана
+              %option{:value => "30"} Бразилия
+              %option{:value => "31"} Британские Виргинские о-ва
+              %option{:value => "32"} Бруней
+              %option{:value => "33"} Буркина Фасо
+              %option{:value => "34"} Бурунди
+              %option{:value => "35"} Бутан
+              %option{:value => "36"} Валлис и Футуна о-ва
+              %option{:value => "37"} Вануату
+              %option{:value => "38"} Великобритания
+              %option{:value => "39"} Венгрия
+              %option{:value => "40"} Венесуэла
+              %option{:value => "41"} Восточный Тимор
+              %option{:value => "42"} Вьетнам
+              %option{:value => "43"} Габон
+              %option{:value => "44"} Гаити
+              %option{:value => "45"} Гайана
+              %option{:value => "46"} Гамбия
+              %option{:value => "47"} Гана
+              %option{:value => "48"} Гваделупа
+              %option{:value => "49"} Гватемала
+              %option{:value => "50"} Гвинея
+              %option{:value => "51"} Гвинея-Бисау
+              %option{:value => "52"} Германия
+              %option{:value => "53"} Гернси о-в
+              %option{:value => "54"} Гибралтар
+              %option{:value => "55"} Гондурас
+              %option{:value => "56"} Гонконг
+              %option{:value => "57"} Гренада
+              %option{:value => "58"} Гренландия
+              %option{:value => "59"} Греция
+              %option{:value => "60"} Грузия
+              %option{:value => "61"} Дания
+              %option{:value => "62"} Джерси о-в
+              %option{:value => "63"} Джибути
+              %option{:value => "64"} Доминиканская республика
+              %option{:value => "65"} Египет
+              %option{:value => "66"} Замбия
+              %option{:value => "67"} Западная Сахара
+              %option{:value => "68"} Зимбабве
+              %option{:value => "69"} Израиль
+              %option{:value => "70"} Индия
+              %option{:value => "71"} Индонезия
+              %option{:value => "72"} Иордания
+              %option{:value => "73"} Ирак
+              %option{:value => "74"} Иран
+              %option{:value => "75"} Ирландия
+              %option{:value => "76"} Исландия
+              %option{:value => "77"} Испания
+              %option{:value => "78"} Италия
+              %option{:value => "79"} Йемен
+              %option{:value => "80"} Кабо-Верде
+              %option{:value => "81"} Казахстан
+              %option{:value => "82"} Камбоджа
+              %option{:value => "83"} Камерун
+              %option{:value => "84"} Канада
+              %option{:value => "85"} Катар
+              %option{:value => "86"} Кения
+              %option{:value => "87"} Кипр
+              %option{:value => "88"} Кирибати
+              %option{:value => "89"} Китай
+              %option{:value => "90"} Колумбия
+              %option{:value => "91"} Коморские о-ва
+              %option{:value => "92"} Конго (Brazzaville)
+              %option{:value => "93"} Конго (Kinshasa)
+              %option{:value => "94"} Коста-Рика
+              %option{:value => "95"} Кот-д'Ивуар
+              %option{:value => "96"} Куба
+              %option{:value => "97"} Кувейт
+              %option{:value => "98"} Кука о-ва
+              %option{:value => "99"} Кыргызстан
+              %option{:value => "100"} Лаос
+              %option{:value => "101"} Латвия
+              %option{:value => "102"} Лесото
+              %option{:value => "103"} Либерия
+              %option{:value => "104"} Ливан
+              %option{:value => "105"} Ливия
+              %option{:value => "106"} Литва
+              %option{:value => "107"} Лихтенштейн
+              %option{:value => "108"} Люксембург
+              %option{:value => "109"} Маврикий
+              %option{:value => "110"} Мавритания
+              %option{:value => "111"} Мадагаскар
+              %option{:value => "112"} Македония
+              %option{:value => "113"} Малави
+              %option{:value => "114"} Малайзия
+              %option{:value => "115"} Мали
+              %option{:value => "116"} Мальдивские о-ва
+              %option{:value => "117"} Мальта
+              %option{:value => "118"} Мартиника о-в
+              %option{:value => "119"} Мексика
+              %option{:value => "120"} Мозамбик
+              %option{:value => "121"} Молдова
+              %option{:value => "122"} Монако
+              %option{:value => "123"} Монголия
+              %option{:value => "124"} Морокко
+              %option{:value => "125"} Мьянма (Бирма)
+              %option{:value => "126"} Мэн о-в
+              %option{:value => "127"} Намибия
+              %option{:value => "128"} Науру
+              %option{:value => "129"} Непал
+              %option{:value => "130"} Нигер
+              %option{:value => "131"} Нигерия
+              %option{:value => "132"} Нидерланды (Голландия)
+              %option{:value => "133"} Никарагуа
+              %option{:value => "134"} Новая Зеландия
+              %option{:value => "135"} Новая Каледония о-в
+              %option{:value => "136"} Норвегия
+              %option{:value => "137"} Норфолк о-в
+              %option{:value => "138"} О.А.Э.
+              %option{:value => "139"} Оман
+              %option{:value => "140"} Пакистан
+              %option{:value => "141"} Панама
+              %option{:value => "142"} Папуа Новая Гвинея
+              %option{:value => "143"} Парагвай
+              %option{:value => "144"} Перу
+              %option{:value => "145"} Питкэрн о-в
+              %option{:value => "146"} Польша
+              %option{:value => "147"} Португалия
+              %option{:value => "148"} Пуэрто Рико
+              %option{:value => "149"} Реюньон
+              %option{:value => "1"} Россия
+              %option{:value => "150"} Руанда
+              %option{:value => "151"} Румыния
+              %option{:value => "153"} Сальвадор
+              %option{:value => "154"} Самоа
+              %option{:value => "155"} Сан-Марино
+              %option{:value => "156"} Сан-Томе и Принсипи
+              %option{:value => "157"} Саудовская Аравия
+              %option{:value => "158"} Свазиленд
+              %option{:value => "159"} Святая Люсия
+              %option{:value => "160"} Святой Елены о-в
+              %option{:value => "226"} Северная Ирландия
+              %option{:value => "161"} Северная Корея
+              %option{:value => "162"} Сейшеллы
+              %option{:value => "163"} Сен-Пьер и Микелон
+              %option{:value => "164"} Сенегал
+              %option{:value => "165"} Сент Китс и Невис
+              %option{:value => "166"} Сент-Винсент и Гренадины
+              %option{:value => "218"} Сербия
+              %option{:value => "167"} Сербия и Черногория
+              %option{:value => "168"} Сингапур
+              %option{:value => "169"} Сирия
+              %option{:value => "170"} Словакия
+              %option{:value => "171"} Словения
+              %option{:value => "172"} Соломоновы о-ва
+              %option{:value => "173"} Сомали
+              %option{:value => "174"} Судан
+              %option{:value => "175"} Суринам
+              %option{:value => "152"} США
+              %option{:value => "176"} Сьерра-Леоне
+              %option{:value => "177"} Таджикистан
+              %option{:value => "179"} Таиланд
+              %option{:value => "178"} Тайвань
+              %option{:value => "180"} Танзания
+              %option{:value => "181"} Того
+              %option{:value => "182"} Токелау о-ва
+              %option{:value => "183"} Тонга
+              %option{:value => "184"} Тринидад и Тобаго
+              %option{:value => "185"} Тувалу
+              %option{:value => "186"} Тунис
+              %option{:value => "187"} Туркменистан
+              %option{:value => "188"} Туркс и Кейкос
+              %option{:value => "189"} Турция
+              %option{:value => "190"} Уганда
+              %option{:value => "191"} Узбекистан
+              %option{:value => "2"} Украина
+              %option{:value => "192"} Уругвай
+              %option{:value => "225"} Уэльс
+              %option{:value => "193"} Фарерские о-ва
+              %option{:value => "194"} Фиджи
+              %option{:value => "195"} Филиппины
+              %option{:value => "196"} Финляндия
+              %option{:value => "197"} Франция
+              %option{:value => "198"} Французская Гвинея
+              %option{:value => "199"} Французская Полинезия
+              %option{:value => "200"} Хорватия
+              %option{:value => "201"} Чад
+              %option{:value => "217"} Черногория
+              %option{:value => "202"} Чехия
+              %option{:value => "203"} Чили
+              %option{:value => "204"} Швейцария
+              %option{:value => "205"} Швеция
+              %option{:value => "227"} Шотландия
+              %option{:value => "206"} Шри-Ланка
+              %option{:value => "207"} Эквадор
+              %option{:value => "208"} Экваториальная Гвинея
+              %option{:value => "209"} Эритрея
+              %option{:value => "210"} Эстония
+              %option{:value => "211"} Эфиопия
+              %option{:value => "212"} ЮАР
+              %option{:value => "213"} Южная Корея
+              %option{:value => "219"} Южная Осетия
+              %option{:value => "214"} Ямайка
+              %option{:value => "215"} Япония
+        %tr
+          %td Город
+          %td{:colspan => "3"}
+            %input{:id => "frmC[oras_f]", :name => "frmC[oras_f]", :type => "text", :value => ""}
+        %tr
+          %td Индекс
+          %td{:colspan => "3"}
+            %input{:id => "frmC[index_f]", :name => "frmC[index_f]", :type => "text", :value => ""}
+        %tr
+          %td Улица
+          %td
+            %input{:id => "frmC[strada_f]", :name => "frmC[strada_f]", :type => "text", :value => ""}
+          %td Номер дома
+          %td
+            %input{:id => "frmC[numarul_f]", :name => "frmC[numarul_f]", :type => "text", :value => ""}
+        %tr
+          %td{:colspan => "4", :style => "border-bottom: 1px solid gray;"}
+            Адрес фактурации
+        %tr
+          %td Количество сотрудников
+          %td{:colspan => "3"}
+            %input{:id => "frmC[count_s]", :name => "frmC[count_s]", :type => "text", :value => ""}
+        %tr
+          %td Форма собственности
+          %td{:colspan => "3"}
+            %select{:id => "frmC[form_s]", :name => "frmC[form_s]", :size => "1"}
+              %option{:value => "0"} --  Любое  --
+              %option{:value => "17"} Частная

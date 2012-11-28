@@ -1,0 +1,12 @@
+.span12
+  = form_for [@commentable, @comment] do |f|
+    - if @comment.errors.any?
+      .error_messages
+        %h2 Please correct the following errors.
+        %ul
+          - @comment.errors.full_messages.each do |msg|
+            %li= msg
+    .form-actions
+      = f.text_area :comment, rows: 8
+      %br
+        = f.submit

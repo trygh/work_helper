@@ -1,0 +1,26 @@
+.form-inline
+  - if user_signed_in?
+    = form_for @task, :html => { :class => 'form-horizontal' } do |f|
+      .control-group
+        / = f.label :title, class: 'control-label'
+        .controls
+          = f.text_field :title, class: 'text_field', placeholder: :title
+      .control-group
+        / = f.label :project_id, class: 'control-label'
+        .controls
+          = f.select :project_id, @projects_selector, class: 'select_field', include_blank: "Please Select Project"
+      .control-group
+        / = f.label :minutes, class: 'control-label'
+        .controls
+          = f.text_field :minutes, class: 'text_field', placeholder: :minutes
+      .control-group
+        / = f.label :url, class: 'control-label'
+        .controls
+          = f.text_field :url, class: 'text_field', placeholder: :url
+      .control-group
+        / = f.label :content, class: 'control-label'
+        .controls
+          = f.text_area :content, class: 'text_area', rows: '7'
+      .form-actions
+        = f.submit nil, :class => 'btn btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), tasks_path, :class => 'btn'
