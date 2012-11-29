@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#task_published_on').datepicker
+  $('#task_reported_for').datepicker
     dateFormat: 'dd-mm-yy'

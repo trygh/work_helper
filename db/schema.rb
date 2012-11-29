@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20121129101102) do
     t.integer  "minutes"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.date     "published_on"
+    t.date     "reported_for"
   end
 
   create_table "users", :force => true do |t|
