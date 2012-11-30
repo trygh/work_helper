@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
-    @task = Task.new
+    @task = Task.new(reported_for: Date.today)
 
     @projects_selector = Project.order(:name).all.map {|project| [project.name, project.id]}
 
@@ -69,7 +69,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
