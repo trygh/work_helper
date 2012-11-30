@@ -17,7 +17,7 @@
           = f.text_field :title, class: 'text_field', placeholder: 'Title'
       .control-group
         .controls
-          = f.select :project_id, @projects_selector, class: 'select_field', include_blank: "Choose a project"
+          = f.collection_select :project_id, Project.find(:all), :id, :name, :prompt => "Choose a project"
       .control-group
         .controls
           = f.text_field :minutes, class: 'text_field', placeholder: 'Minutes'

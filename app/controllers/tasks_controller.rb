@@ -29,8 +29,6 @@ class TasksController < ApplicationController
   def new
     @task = Task.new(reported_for: Date.today)
 
-    @projects_selector = Project.order(:name).all.map {|project| [project.name, project.id]}
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @task }
@@ -40,16 +38,12 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = current_user.tasks.find(params[:id])
-
-    @projects_selector = Project.order(:name).all.map {|project| [project.name, project.id]}
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = current_user.tasks.build(params[:task])
-
-    @projects_selector = Project.order(:name).all.map {|project| [project.name, project.id]}
 
     respond_to do |format|
       if @task.save
