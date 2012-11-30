@@ -1,21 +1,31 @@
 .form-inline
-  - if user_signed_in?
-    = form_for @task, :html => { :class => 'form-horizontal' } do |f|
-      .control-group
-        .controls
-          = f.text_field :title, class: 'text_field', placeholder: 'Title'
-      .control-group
-        .controls
-          = f.select :project_id, @projects_selector, class: 'select_field', include_blank: "Please select a project"
-      .control-group
-        .controls
-          = f.text_field :minutes, class: 'text_field', placeholder: 'Minutes'
-      .control-group
-        .controls
-          = f.text_field :url, class: 'text_field', placeholder: 'URL'
-      .control-group
-        .controls
-          = f.text_area :content, class: 'text_area', rows: '7'
-      .form-actions
-        = f.submit nil, :class => 'btn btn-primary'
-        = link_to t('.cancel', :default => t("helpers.links.cancel")), tasks_path, :class => 'btn'
+  = form_for @task, :html => { :class => 'form-horizontal' } do |f|
+    - if @task.errors.any?
+      .alert.alert-error
+        %h2
+          = pluralize(@task.errors.count, "error")
+          prohibited this task from being saved:
+        %ul
+          - @task.errors.full_messages.each do |msg|
+            %li= msg
+    .control-group
+      .controls
+        = f.text_field :reported_for, class: "input-xxlarge", placeholder: 'Choose a date'
+    .control-group
+      .controls
+        = f.text_field :title, class: "input-xxlarge", placeholder: 'Title'
+    .control-group
+      .controls
+        = f.collection_select(:project_id, Project.all(order: "name ASC"), :id, :name,  {prompt: "Choose a project"}, {class: "span7"})
+    .control-group
+      .controls
+        = f.text_field :minutes, class: "input-xxlarge", placeholder: 'Minutes'
+    .control-group
+      .controls
+        = f.text_field :url, class: "input-xxlarge", placeholder: 'URL'
+    .control-group
+      .controls
+        = f.text_area :content, class: "input-xxlarge", rows: '10'
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), tasks_path, :class => 'btn'

@@ -27,9 +27,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
-    @task = Task.new
-
-    @projects_selector = Project.order(:name).all.map {|project| [project.name, project.id]}
+    @task = Task.new(reported_for: Date.today)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,16 +38,12 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = current_user.tasks.find(params[:id])
-
-    @projects_selector = Project.order(:name).all.map {|project| [project.name, project.id]}
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = current_user.tasks.build(params[:task])
-
-    @projects_selector = Project.order(:name).all.map {|project| [project.name, project.id]}
 
     respond_to do |format|
       if @task.save
@@ -69,7 +63,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

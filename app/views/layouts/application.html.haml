@@ -30,9 +30,9 @@
             %ul.nav
               %li= link_to "Projects", projects_path
               %li= link_to "Tasks", tasks_path
-            %div.login
+            %ul.login
               - if user_signed_in?
-                Logged in as #{current_user.email}.
+                Logged in as #{current_user.first_name} #{current_user.last_name}.
                 \#{link_to "Logout", destroy_user_session_path, method: :delete}
               - else
                 = link_to "Sign Up", new_user_registration_path
@@ -41,17 +41,16 @@
     .container
 
       .row
-        .span9
+        .span12
           = bootstrap_flash
           = yield
-        / .span3
+        / .span2
         /   .well.sidebar-nav
         /     %h3 Sidebar
         /     %ul.nav.nav-list
-        /       %li.nav-header Sidebar
-        /       %li= link_to "Link 1", "/path1"
-        /       %li= link_to "Link 2", "/path2"
-        /       %li= link_to "Link 3", "/path3"
+        /       %li= link_to "Tasks", tasks_path
+        /       %li= link_to "Projects", projects_path
+        /       %li= link_to "About"
 
       %footer
         %p &copy; Tasks Reports 2012

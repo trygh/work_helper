@@ -26,6 +26,10 @@
   %strong= model_class.human_attribute_name(:minutes) + ':'
   %br
   = @task.minutes
+%p
+  %strong= model_class.human_attribute_name(:reported_for) + ':'
+  %br
+  = @task.reported_for.strftime("%d/%m/%Y")
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), tasks_path, :class => 'btn'
