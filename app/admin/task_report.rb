@@ -1,4 +1,4 @@
-ActiveAdmin.register Task do
+ActiveAdmin.register TaskReport do
   # form do |f|
   #   f.input :title
   #   f.input :content
@@ -7,5 +7,5 @@ ActiveAdmin.register Task do
   #   f.select :project_id
   #   f.input :minutes
   # end
-  # render :partial => "admin/task"
+  # render :partial => "admin/task_report"
 end

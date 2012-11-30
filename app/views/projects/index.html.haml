@@ -12,7 +12,7 @@
   %tbody
     - @projects.each do |project|
       %tr
-        %td= link_to project.id, project_path(project)
+        %td= project.id
         %td= link_to project.name, project_path(project)
         %td= link_to project.url, project.url, target: "_blank"
         %td= project.created_at.strftime("%d/%m/%Y")
