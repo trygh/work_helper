@@ -20,7 +20,7 @@
       - for report in current_user.task_reports
         %tr
           %td= report.id
-          %td= report.title
+          %td= link_to report.title, task_report_path(report)
           %td= report.project.name
           %td= report.minutes
           %td
