@@ -19,7 +19,7 @@
       %tr
         %td= task.id
         %td= link_to task.title, task_path(task)
-        %td= link_to truncate(task.url, omision: "...", length: 50), task.url, target: "_blank", title: task.url
+        %td= link_to task.url, task.url, target: "_blank", title: "Reference"
         %td
           = task.user.first_name
           = task.user.last_name
