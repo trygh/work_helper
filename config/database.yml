@@ -14,7 +14,7 @@ development:
   reconnect: false
   database: wh_development
   pool: 5
-  username: root
+  username: alex
   password: alex
   socket: /var/run/mysqld/mysqld.sock
 
@@ -27,7 +27,7 @@ test:
   reconnect: false
   database: wh_test
   pool: 5
-  username: root
+  username: alex
   password: alex
   socket: /var/run/mysqld/mysqld.sock
 
@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: wh_production
   pool: 5
-  username: root
+  username: alex
   password: alex
   socket: /var/run/mysqld/mysqld.sock
