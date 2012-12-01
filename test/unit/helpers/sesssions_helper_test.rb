@@ -1,4 +1,4 @@
-require 'test_helper'
+require "spec_helper"
 
 class SesssionsHelperTest < ActionView::TestCase
 end

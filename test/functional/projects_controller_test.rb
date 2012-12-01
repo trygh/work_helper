@@ -1,4 +1,4 @@
-require 'test_helper'
+require "spec_helper"
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
