@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /projects
   # GET /projects.json
   def index
@@ -14,6 +17,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @reports = TaskReport.where(project_id: @project.id)
 
     respond_to do |format|
       format.html # show.html.erb

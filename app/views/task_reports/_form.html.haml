@@ -1,12 +1,12 @@
 .form-inline
-  = form_for @task, :html => { :class => 'form-horizontal' } do |f|
-    - if @task.errors.any?
+  = form_for @task_report, :html => { :class => 'form-horizontal' } do |f|
+    - if @task_report.errors.any?
       .alert.alert-error
         %h2
-          = pluralize(@task.errors.count, "error")
+          = pluralize(@task_report.errors.count, "error")
           prohibited this task from being saved:
         %ul
-          - @task.errors.full_messages.each do |msg|
+          - @task_report.errors.full_messages.each do |msg|
             %li= msg
     .control-group
       .controls
@@ -16,7 +16,7 @@
         = f.text_field :title, class: "input-xxlarge", placeholder: 'Title'
     .control-group
       .controls
-        = f.collection_select(:project_id, Project.all(order: "name ASC"), :id, :name,  {prompt: "Choose a project"}, {class: "span7"})
+        = f.collection_select(:project_id, Project.all(order: "name ASC"), :id, :name,  {prompt: "Choose a project"}, {class: "span6"})
     .control-group
       .controls
         = f.text_field :minutes, class: "input-xxlarge", placeholder: 'Minutes'
@@ -28,4 +28,4 @@
         = f.text_area :content, class: "input-xxlarge", rows: '10'
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), tasks_path, :class => 'btn'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn'

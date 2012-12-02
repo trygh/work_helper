@@ -1,4 +1,4 @@
-class Task < ActiveRecord::Base
+class TaskReport < ActiveRecord::Base
   attr_accessible :content, :minutes, :project_id, :title, :url, :reported_for
 
   belongs_to :project

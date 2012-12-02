@@ -1,15 +1,25 @@
 - model_class = Project
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human
+  %h1=t '.title', :default => @project.name
+  %p= link_to @project.url, @project.url, target: "_blank"
 
-%p
-  %strong= model_class.human_attribute_name(:name) + ':'
-  %br
-  = @project.name
-%p
-  %strong= model_class.human_attribute_name(:url) + ':'
-  %br
-  = link_to @project.url, @project.url, target: "_blank"
+
+.row
+  .span6
+    %h4 Reports for this project
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= model_class.human_attribute_name(:id)
+          %th= model_class.human_attribute_name(:minutes)
+      %tbody
+        - for report in @reports
+          %tr
+            %td= report.title
+            %td= report.minutes
+            %td
+              = report.user.first_name
+              = report.user.last_name
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn'
