@@ -16,7 +16,6 @@
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="/favicon.ico" rel="shortcut icon")
 
-
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -25,36 +24,33 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Tasks Reports", root_path, class: "brand"
           .container.nav-collapse
-            %ul.nav
-              %li= link_to "Projects", projects_path
-              %li= link_to "Task Reports", task_reports_path
-            %ul.login
-              - if user_signed_in?
+            - if user_signed_in?
+              %ul.nav
+                %li= link_to "Task Reports", task_reports_path
+                %li= link_to "Projects", projects_path
+              %ul.login
                 Logged in as
                 = link_to current_user.email, profile_path
                 \#{link_to "Logout", destroy_user_session_path, method: :delete}
-              - else
-                = link_to "Sign Up", new_user_registration_path
-                or
-                \#{link_to "Log In", new_user_session_path}
+            - else
+              = link_to "Sign Up", new_user_registration_path
+              or
+              \#{link_to "Log In", new_user_session_path}
     .container
 
       .row
         .span12
-          = bootstrap_flash
+          = flash_block
           = yield
-        / .span2
-        /   .well.sidebar-nav
-        /     %h3 Sidebar
-        /     %ul.nav.nav-list
-        /       %li= link_to "Tasks", tasks_path
-        /       %li= link_to "Projects", projects_path
-        /       %li= link_to "About"
 
       %footer
-        %p &copy; Tasks Reports 2012
+        %hr
+        %p
+          %a(target="_blank" href='https://github.com/CMEP/work_helper') Work helper.
+          Powered by
+          %a(target="_blank" href='http://rubyonrails.org') RubyOnRails
+          \.
     /
       Javascripts
       \==================================================
