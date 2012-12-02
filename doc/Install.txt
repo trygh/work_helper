@@ -1,0 +1,6 @@
+We will use rails user
+
+usermod -G sudo,rvm -a rails
+
+rvm use @whelper
+gem install unicorn

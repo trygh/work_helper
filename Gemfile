@@ -34,6 +34,8 @@ gem 'devise'
 gem 'activeadmin'
 
 group :development do
+  gem 'capistrano', :require => nil
+  gem 'rvm-capistrano', :require => nil
   gem 'guard'
   gem 'guard-livereload'
 end
