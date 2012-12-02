@@ -5,7 +5,8 @@ class TaskReportsController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @task_reports = current_user.task_reports
+    @task_reports = current_user.task_reports.order('reported_for desc')
+    @total_h = @task_reports.inject(0) {|rez, el| rez += el.minutes } / 60.0
 
     respond_to do |format|
       format.html # index.html.erb

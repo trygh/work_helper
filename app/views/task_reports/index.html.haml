@@ -2,27 +2,28 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
   = link_to t('.new', :default => t("helpers.links.new")), new_task_report_path, :class => 'btn btn-primary'
-%table.table.table-hover
+%p
+  Total
+  %span.b= @total_h
+  hours
+
+%table.table.table-hover.center
   %thead
     %tr
-      %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:url)
-      %th= model_class.human_attribute_name(:user_id)
+      %th Date
+      %th
+        Duration
+        %span.small (minutes)
       %th= model_class.human_attribute_name(:project_id)
-      %th= model_class.human_attribute_name(:minutes)
-      %th= model_class.human_attribute_name(:reported_for)
+      %th(class='long_str') Task
       %th
   %tbody
     - @task_reports.each do |task_report|
       %tr
+        %td(class='date')= l task_report.reported_for, format: '%d %b'
+        %td(class='number')= task_report.minutes
+        %td(class='short_str')= task_report.project.name
         %td= link_to task_report.title, task_report_path(task_report)
-        %td= link_to task_report.url, task_report.url, target: "_blank", title: "Reference"
-        %td
-          = task_report.user.first_name
-          = task_report.user.last_name
-        %td= task_report.project.name
-        %td= task_report.minutes
-        %td= l task_report.reported_for, format: :long
         %td
           - if user_signed_in?
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_task_report_path(task_report), :class => 'btn btn-mini'
