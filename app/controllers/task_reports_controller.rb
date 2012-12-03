@@ -6,7 +6,7 @@ class TaskReportsController < ApplicationController
   # GET /tasks.json
   def index
     @task_reports = current_user.task_reports.order('reported_for desc')
-    mm = current_user.task_reports.sum(:minutes)
+    mm = @task_reports.sum(:minutes)
     @hh, @mm = mm.divmod(60)
 
     respond_to do |format|
@@ -61,10 +61,10 @@ class TaskReportsController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-    @task_report = current_user.task_reports.build(params[:task_report])
+    @task_report = current_user.task_reports.find(params[:id])
 
     respond_to do |format|
-      if @task_report.update_attributes(params[:task])
+      if @task_report.update_attributes(params[:task_report])
         format.html { redirect_to task_reports_path, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
