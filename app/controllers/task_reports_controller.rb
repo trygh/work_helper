@@ -6,7 +6,7 @@ class TaskReportsController < ApplicationController
   # GET /tasks.json
   def index
     @task_reports = current_user.task_reports.order('reported_for desc')
-    @total_h = @task_reports.inject(0) {|rez, el| rez += el.minutes } / 60.0
+    @hours, @minutes = @task_reports.sum(:minutes).divmod(60)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -63,7 +63,7 @@ class TaskReportsController < ApplicationController
     @task_report = current_user.task_reports.find(params[:id])
 
     respond_to do |format|
-      if @task_report.update_attributes(params[:task])
+      if @task_report.update_attributes(params[:task_report])
         format.html { redirect_to task_reports_path, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,11 +76,11 @@ class TaskReportsController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task_report = current_user.tasks.find(params[:id])
+    @task_report = current_user.task_reports.find(params[:id])
     @task_report.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to task_reports_url }
       format.json { head :no_content }
     end
   end
