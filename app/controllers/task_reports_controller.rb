@@ -77,11 +77,11 @@ class TaskReportsController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task_report = current_user.tasks.find(params[:id])
+    @task_report = current_user.task_reports.find(params[:id])
     @task_report.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to task_reports_url }
       format.json { head :no_content }
     end
   end
