@@ -61,7 +61,7 @@ class TaskReportsController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-    @task_report = current_user.task_reports.find(params[:id])
+    @task_report = current_user.task_reports.build(params[:task_report])
 
     respond_to do |format|
       if @task_report.update_attributes(params[:task])
