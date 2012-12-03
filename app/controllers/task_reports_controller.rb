@@ -6,8 +6,7 @@ class TaskReportsController < ApplicationController
   # GET /tasks.json
   def index
     @task_reports = current_user.task_reports.order('reported_for desc')
-    mm = @task_reports.sum(:minutes)
-    @hh, @mm = mm.divmod(60)
+    @hours, @minutes = @task_reports.sum(:minutes).divmod(60)
 
     respond_to do |format|
       format.html # index.html.erb
