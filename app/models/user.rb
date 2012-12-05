@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :task_reports
+  #participant relatioships
+  has_many :participants, :dependent => :destroy
+  has_many :projects, through: :participants
 
   def name
     "#{first_name} #{last_name}"

@@ -1,8 +1,8 @@
 Crm::Application.routes.draw do
 
-  get "profile", to: "profile#index"
+  match 'profile' => 'profile#index'
 
-  get "profile/edit"
+  match 'profile_edit' => 'profile#edit'
 
   ActiveAdmin.routes(self)
 
