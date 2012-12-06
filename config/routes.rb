@@ -1,8 +1,8 @@
 Crm::Application.routes.draw do
 
-  match 'profile' => 'profile#index'
+  get "profile", to: "profile#index"
 
-  match 'profile_edit' => 'profile#edit'
+  get "profile/edit"
 
   ActiveAdmin.routes(self)
 
@@ -10,7 +10,11 @@ Crm::Application.routes.draw do
 
   resources :task_reports
 
-  resources :projects
+  resources :projects do
+    member do
+      post 'add_participant'
+    end
+  end
 
   devise_for :users
 
@@ -23,6 +27,9 @@ Crm::Application.routes.draw do
 
   devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
 
+  controller :projects do
+    match 'add_participant'  => 'projects#add_participant', :as => :add_participant
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

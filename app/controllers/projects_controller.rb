@@ -25,6 +25,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def add_participant
+    @participant = Participant.find(params[user_id])
+
+    respond_to do |format|
+      if @participant.save
+        format.html { redirect_to @parti}
+      end
+    end
+    render nothing: true
+  end
+
   # GET /projects/new
   # GET /projects/new.json
   def new
