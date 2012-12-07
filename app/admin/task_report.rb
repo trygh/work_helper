@@ -12,6 +12,7 @@ ActiveAdmin.register TaskReport do
     attributes_table do
       row :user
       row :minutes
+      row :project
       row :reported_for
       row :content
     end

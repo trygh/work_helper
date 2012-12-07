@@ -36,7 +36,10 @@ ActiveAdmin.register Project do
           end
         end
         column "title" do |report|
-          report.title
+          link_to(report.title, admin_task_report_path(report))
+        end
+        column "minutes" do |report|
+          report.minutes
         end
         column "reported for" do |report|
           l report.reported_for, format: :long

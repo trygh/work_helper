@@ -34,7 +34,9 @@ ActiveAdmin.register_page "Dashboard" do
     div :class => "panel", :id => "dashboard_default_message" do
       panel "Latest Task Reports" do
         table_for TaskReport.order("reported_for desc").limit(5) do
-          column :title
+          column :title do |task|
+            link_to(task.title, admin_task_report_path(task))
+          end
           column :user
           column :project
           column :reported_for
@@ -46,7 +48,9 @@ ActiveAdmin.register_page "Dashboard" do
     div :class => "panel", :id => "dashboard_default_message" do
       panel "Latest Projects" do
         table_for Project.order("created_at desc").limit(5) do
-          column :name
+          column :name do |project|
+            link_to(project.name, admin_project_path(project))
+          end
           column :created_at
         end
         strong { link_to "View All Projects", admin_projects_path }
@@ -56,7 +60,9 @@ ActiveAdmin.register_page "Dashboard" do
     div :class => "panel", :id => "dashboard_default_message" do
       panel "Latest Users" do
         table_for User.order("created_at desc").limit(5) do
-          column :email
+          column :email do |user|
+            link_to(user.email, admin_user_path(user))
+          end
           column :last_name
           column :first_name
           column :created_at
