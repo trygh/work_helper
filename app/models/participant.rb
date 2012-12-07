@@ -13,5 +13,8 @@ class Participant < ActiveRecord::Base
   end
 
   scope :owner_role, where(:role_id => Role::OWNER)
+  scope :manager_role, where(:role_id => Role::MANAGER)
+  scope :agent_role, where(:role_id => Role::AGENT)
+  scope :worker_role, where(:role_id => Role::WORKER)
 
 end

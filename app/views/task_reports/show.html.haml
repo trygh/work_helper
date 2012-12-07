@@ -1,7 +1,15 @@
 - model_class = TaskReport
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human
-
+  %h2
+    %span
+      = @task_report.title
+  %small
+    = l @task_report.reported_for, format: :long
+    for project
+    = link_to @task_report.project.name, project_path(@task_report.project)
+    time:
+    = @task_report.minutes
+    minutes
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br
@@ -9,28 +17,16 @@
 %p
   %strong= model_class.human_attribute_name(:content) + ':'
   %br
-  = @task_report.content
+  %pre
+    = @task_report.content
 %p
   %strong= model_class.human_attribute_name(:url) + ':'
   %br
   = link_to @task_report.url, @task_report.url, target: "_blank"
 %p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
-  %br
-  = @task_report.user.first_name
-  = @task_report.user.last_name
-%p
-  %strong= model_class.human_attribute_name(:project_id) + ':'
-  %br
-  = @task_report.project.name
-%p
   %strong= model_class.human_attribute_name(:minutes) + ':'
   %br
   = @task_report.minutes
-%p
-  %strong= model_class.human_attribute_name(:reported_for) + ':'
-  %br
-  = l @task_report.reported_for, format: :long
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), task_reports_path, :class => 'btn'
