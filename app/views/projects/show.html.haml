@@ -4,6 +4,10 @@
     =t '.title', :default => @project.name
   %p= link_to @project.url, @project.url, target: "_blank"
 
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn'
+  %a.btn{"data-toggle" => "modal", :href => "#addPerson", :role => "button"} Add person to project
+
 .row
   .span8
     %h4 Reports for this project
@@ -15,11 +19,11 @@
       %tbody
         - for report in @reports
           %tr
-            %td= report.title
             %td= link_to report.title, task_report_path(report.id)
+            %td= report.minutes
             %td
-              = report.user.first_name
-              = report.user.last_name
+              =link_to report.user.first_name, user_path(report.user)
+              =link_to report.user.last_name, user_path(report.user)
   .span3
     %p
       %strong Total time on this project:
@@ -35,7 +39,7 @@
     %h3#myModalLabel
       Add person to #{@project.name}
       #flash
-    = form_for :add_participant, url: add_participant_path, :html => { :class => 'form-horizontal' } do |f|
+    = form_for :participant, url: project_participant_path(@project.id), :html => { :class => 'form-horizontal' } do |f|
       .modal-body
         %p
           = f.email_field :email, placeholder: "User Email"
@@ -47,8 +51,6 @@
       .modal-footer
         = f.submit "Add participant", :class => 'btn btn-primary'
 
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn'
-  %a.btn{"data-toggle" => "modal", :href => "#addPerson", :role => "button"} Add person to project
+
   / = link_to t('.edit', :default => t("helpers.links.edit")), edit_project_path(@project), :class => 'btn'
   / = link_to t('.destroy', :default => t("helpers.links.destroy")), project_path(@project), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

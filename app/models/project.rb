@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :name, :url, :user
+  attr_accessible :name, :url
 
   has_many :task_reports
   has_many :participants, dependent: :destroy

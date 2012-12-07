@@ -21,7 +21,7 @@ ActiveAdmin.register Project do
           participant.user.last_name
         end
         column "Role" do |participant|
-          participant.role_id
+          Participant::ROLE_BY_ID[participant.role_id]
         end
       end
     end

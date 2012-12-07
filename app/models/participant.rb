@@ -12,7 +12,7 @@ class Participant < ActiveRecord::Base
     end
   end
 
-  PARTICIPANT = ROLE.invert
+  ROLE_BY_ID = ROLE.invert
 
   scope :owner_role, where(:role_id => Role::OWNER)
   scope :manager_role, where(:role_id => Role::MANAGER)
