@@ -40,6 +40,15 @@ group :development do
   gem 'guard-livereload'
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem "factory_girl_rails", :require => nil
+end
+
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
