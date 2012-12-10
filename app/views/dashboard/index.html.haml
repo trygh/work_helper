@@ -23,7 +23,7 @@
       %tbody
         - @page.user_weekly_stats.each do |user, minutes|
           %tr
-            %td= user.name
+            %td= link_to user.name, filter_task_reports_path(interval: 'week', user_id: user.id)
             %td= min_show minutes
 
   .span4
@@ -35,7 +35,7 @@
       %tbody
         - @page.user_monthly_stats.each do |user, minutes|
           %tr
-            %td= user.name
+            %td= link_to user.name, filter_task_reports_path(interval: 'month', user_id: user.id)
             %td.number= min_show minutes
 
 %h2 Hours By Project
@@ -48,9 +48,9 @@
           %th Project
           %th Today
       %tbody
-        - @page.project_stats.each do |user, minutes|
+        - @page.project_stats.each do |project, minutes|
           %tr
-            %td= user.name
+            %td= project.name
             %td.number= min_show minutes
 
   .span4
@@ -60,9 +60,9 @@
           %th Project
           %th Current Week
       %tbody
-        - @page.project_weekly_stats.each do |user, minutes|
+        - @page.project_weekly_stats.each do |project, minutes|
           %tr
-            %td= user.name
+            %td= link_to project.name, filter_task_reports_path(interval: 'week', project_id: project.id)
             %td= min_show minutes
 
   .span4
@@ -72,7 +72,7 @@
           %th Project
           %th Current Month
       %tbody
-        - @page.project_monthly_stats.each do |user, minutes|
+        - @page.project_monthly_stats.each do |project, minutes|
           %tr
-            %td= user.name
+            %td= link_to project.name, filter_task_reports_path(interval: 'month', project_id: project.id)
             %td.number= min_show minutes

@@ -14,10 +14,16 @@ class TaskReportsController < ApplicationController
     end
   end
 
+  def filter
+    @page = TaskReportFilterPage.new(current_user, params)
+  end
+
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task_report = current_user.task_reports.find(params[:id])
+    #@task_report = current_user.task_reports.find(params[:id])
+    # FIXME use cancan or other gem to authorize view of task report
+    @task_report = TaskReport.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

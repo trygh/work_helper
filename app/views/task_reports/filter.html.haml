@@ -1,0 +1,39 @@
+%h2 Filtered Task Reports
+
+.row
+  Date
+  %span.b= @page.start.to_s :db
+  and
+  %span.b= @page.end.to_s :db
+
+- if @page.project_filter
+  .row
+    Project:
+    %b= @page.project.name
+
+- if @page.user_filter
+  .row
+    User:
+    %b= @page.user.name
+
+%table.table.table-hover.center
+  %thead
+    %tr
+      %th Date
+      %th Duration
+      - unless @page.project_filter
+        %th= Project
+      - unless @page.user_filter
+        %th User
+      %th(class='long_str') Task
+      %th
+  %tbody
+    - @page.task_reports.each do |task_report|
+      %tr
+        %td(class='date')= l task_report.reported_for, format: '%d %b'
+        %td(class='number')= min_show task_report.minutes
+        - unless @page.user_filter
+          %td= task_report.user.name
+        - unless @page.project_filter
+          %td(class='short_str')= link_to task_report.project.name, project_path(task_report.project)
+        %td= link_to task_report.title, task_report_path(task_report)

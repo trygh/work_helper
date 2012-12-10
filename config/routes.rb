@@ -8,7 +8,11 @@ Crm::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :task_reports
+  resources :task_reports do
+    collection do
+      get :filter
+    end
+  end
 
   resources :projects do
     resources :participants, controller: "projects/participants", only: [:create]
