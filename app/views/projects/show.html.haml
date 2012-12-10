@@ -15,15 +15,14 @@
       %thead
         %tr
           %th= model_class.human_attribute_name(:title)
-          %th= model_class.human_attribute_name(:minutes)
+          %th= Time
+          %th= User
       %tbody
         - for report in @reports
           %tr
             %td= link_to report.title, task_report_path(report.id)
-            %td= report.minutes
-            %td
-              =link_to report.user.first_name, user_path(report.user)
-              =link_to report.user.last_name, user_path(report.user)
+            %td= min_show report.minutes
+            %td= link_to report.user.name, user_path(report.user)
   .span3
     %p
       %strong Total time on this project:

@@ -8,7 +8,11 @@ Crm::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :task_reports
+  resources :task_reports do
+    collection do
+      get :filter
+    end
+  end
 
   resources :projects do
     resources :participants, controller: "projects/participants", only: [:create]
@@ -74,7 +78,7 @@ Crm::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'task_reports#index'
+  root :to => 'dashboard#index'
 
   # See how all your routes lay out with "rake routes"
 
