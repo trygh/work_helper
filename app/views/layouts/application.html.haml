@@ -27,6 +27,7 @@
           .container.nav-collapse
             - if user_signed_in?
               %ul.nav
+                %li= link_to "Dashboard", root_path
                 %li= link_to "Task Reports", task_reports_path
                 %li= link_to "Projects", projects_path
               %ul.login
