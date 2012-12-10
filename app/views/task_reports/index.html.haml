@@ -24,7 +24,7 @@
       %tr
         %td(class='date')= l task_report.reported_for, format: '%d %b'
         %td(class='number')= task_report.minutes
-        %td(class='short_str')= task_report.project.name
+        %td(class='short_str')= link_to task_report.project.name, project_path(task_report.project)
         %td= link_to task_report.title, task_report_path(task_report)
         %td
           - if user_signed_in?

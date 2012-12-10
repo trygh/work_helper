@@ -10,7 +10,9 @@ Crm::Application.routes.draw do
 
   resources :task_reports
 
-  resources :projects
+  resources :projects do
+    resources :participants, controller: "projects/participants", only: [:create]
+  end
 
   devise_for :users
 

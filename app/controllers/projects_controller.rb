@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = current_user.projects.where(participants: { role_id: Participant::Role::OWNER}).order('created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @reports = TaskReport.where(project_id: @project.id)
+    @hours, @minutes = @reports.sum(:minutes).divmod(60)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -48,6 +49,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        @project.create_owner(current_user)
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else

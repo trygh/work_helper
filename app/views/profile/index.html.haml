@@ -6,7 +6,7 @@
   %h5
     = link_to 'Edit profile', edit_user_registration_path
 
-.span8
+.span12
   %h4 Reports for this project
   %table.table.table-hover
     %thead
@@ -21,7 +21,7 @@
         %tr
           %td= report.id
           %td= link_to report.title, task_report_path(report)
-          %td= report.project.name
+          %td= link_to report.project.name, project_path(report.project)
           %td= report.minutes
           %td
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_task_report_path(report), :class => 'btn btn-mini'

@@ -44,7 +44,7 @@ class TaskReportsController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task_report = current_user.task_reports.build(params[:task_report])
+    @task_report = current_user.task_reports.new(params[:task_report])
 
     respond_to do |format|
       if @task_report.save
@@ -64,7 +64,7 @@ class TaskReportsController < ApplicationController
 
     respond_to do |format|
       if @task_report.update_attributes(params[:task_report])
-        format.html { redirect_to task_reports_path, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @task_report, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
