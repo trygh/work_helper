@@ -1,6 +1,6 @@
 - model_class = TaskReport
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+  %h1 Task reports for last two weeks
   = link_to t('.new', :default => t("helpers.links.new")), new_task_report_path, :class => 'btn btn-primary'
 %p
   Total
@@ -12,18 +12,41 @@
 %table.table.table-hover.center
   %thead
     %tr
-      %th Date
       %th Duration
       %th= model_class.human_attribute_name(:project_id)
       %th(class='long_str') Task
       %th
   %tbody
+    - date = nil
+    - count = 0
+    - group_total = 0
+
     - @task_reports.each do |task_report|
+      - count += 1
+      - group_total += task_report.minutes
+      - if task_report.reported_for.to_date != date
+        - if count > 1
+          %tr
+            %td(colspan='4')
+              Total:
+              %i= min_show group_total
+        - count = 0
+        - group_total = 0
+
+        %tr
+          %td(colspan='4')
+            %b(style='color:blue')= l task_report.reported_for, format: '%d %b'
+          - date = task_report.reported_for.to_date
       %tr
-        %td(class='date')= l task_report.reported_for, format: '%d %b'
         %td(class='number')= min_show task_report.minutes
         %td(class='short_str')= link_to task_report.project.name, project_path(task_report.project)
         %td= link_to task_report.title, task_report_path(task_report)
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_task_report_path(task_report), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), task_report_path(task_report), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+    - if count > 1
+      %tr
+        %td(colspan='4')
+          Total:
+          %i= min_show group_total
