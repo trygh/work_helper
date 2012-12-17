@@ -18,25 +18,24 @@
       %th
   %tbody
     - date = nil
-    - count = 0
-    - group_total = 0
+    - group_total = count = 0
 
     - @task_reports.each do |task_report|
-      - count += 1
-      - group_total += task_report.minutes
       - if task_report.reported_for.to_date != date
         - if count > 1
           %tr
             %td(colspan='4')
               Total:
               %i= min_show group_total
-        - count = 0
-        - group_total = 0
+        - group_total = count = 0
 
         %tr
           %td(colspan='4')
             %b(style='color:blue')= l task_report.reported_for, format: '%d %b'
           - date = task_report.reported_for.to_date
+      - group_total += task_report.minutes
+      - count += 1
+
       %tr
         %td(class='number')= min_show task_report.minutes
         %td(class='short_str')= link_to task_report.project.name, project_path(task_report.project)
