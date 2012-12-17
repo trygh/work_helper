@@ -16,6 +16,10 @@
     User:
     %b= @page.user.name
 
+.row.formats
+  Format:
+  = link_to "CSV", params.merge(format: :csv)
+
 %table.table.table-hover.center
   %thead
     %tr

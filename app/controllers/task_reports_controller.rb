@@ -1,3 +1,5 @@
+require "csv"
+
 class TaskReportsController < ApplicationController
 
   before_filter :authenticate_user!
@@ -16,6 +18,21 @@ class TaskReportsController < ApplicationController
 
   def filter
     @page = TaskReportFilterPage.new(current_user, params)
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.csv do
+        csv_str = CSV.generate do |csv|
+          csv << ["Date", "Hours", "Developer", "Task"]
+
+          @page.task_reports.each do |report|
+            csv  << [report.reported_for, sprintf("%.2f", report.minutes / 60.0), report.user.name, report.title]
+          end
+        end
+
+        render text: csv_str
+      end
+    end
   end
 
   # GET /tasks/1
