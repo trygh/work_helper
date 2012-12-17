@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :first_name, :last_name
   # attr_accessible :title, :body
 
+  has_one :dev_profile, dependent: :delete
   has_many :task_reports
   #participant relatioships
   has_many :participants, :dependent => :destroy
@@ -18,5 +19,9 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  after_create do
+    dev_profile.create
   end
 end

@@ -24,7 +24,9 @@ FactoryGirl.define do
   end
 
   factory :user do
+    username { generate(:username) }
     email { generate(:email) }
-    full_name { generate(:first_name) + ' ' + generate(:last_name) }
+    first_name { generate(:first_name) }
+    last_name { generate(:last_name) }
   end
 end
