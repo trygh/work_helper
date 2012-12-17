@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   end
 
   after_create do
-    dev_profile.create
+    prof = DevProfile.new
+    prof.user = self
+    prof.save!
   end
 end
