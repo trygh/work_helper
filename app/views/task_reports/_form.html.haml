@@ -13,13 +13,13 @@
         = f.text_field :reported_for, class: "input-xxlarge", placeholder: 'Choose a date'
     .control-group
       .controls
-        = f.text_field :title, class: "input-xxlarge", placeholder: 'Task title'
-    .control-group
-      .controls
         = f.collection_select(:project_id, Project.all(order: "name ASC"), :id, :name,  {prompt: "Choose a project"}, {class: "span6"})
     .control-group
       .controls
         = f.text_field :minutes, class: "input-xxlarge", placeholder: 'Task duration in minutes'
+    .control-group
+      .controls
+        = f.text_field :title, class: "input-xxlarge", placeholder: 'Task title'
     .control-group
       .controls
         = f.text_field :url, class: "input-xxlarge", placeholder: 'URL for details'
