@@ -15,7 +15,7 @@ FactoryGirl.define do
     "last_name#{n}"
   end
 
-  sequence :campaign_name do |n|
+  sequence :project_name do |n|
     "SuperName#{n}"
   end
 
@@ -28,5 +28,21 @@ FactoryGirl.define do
     email { generate(:email) }
     first_name { generate(:first_name) }
     last_name { generate(:last_name) }
+  end
+
+  factory :project do
+    name { generate :project_name }
+  end
+
+  factory :task_report do
+    minutes 30
+    url { generate :website }
+    title { "Report for " + generate(:project_name) }
+    reported_for Date.today
+  end
+
+  factory :dev_profile do
+    hourly_rate 5
+    ext_hourly_rate 10
   end
 end
