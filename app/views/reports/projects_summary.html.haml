@@ -1,0 +1,37 @@
+.page-header
+  %h1 Projects Summary
+.row
+  %table.table.table-hover.center
+    %thead
+      %tr
+        %th Project
+        %th Worker
+        %th Total Hours
+        %th Hourly Rate
+        %th Total
+    %tbody
+      - @report.projects_summary.each do |project_id, stats|
+        %tr
+          %td(colspan=5)
+            %b= @report.project_name(project_id)
+        - stats.each do |row|
+          %tr
+            %td
+            %td= row[0]
+            %td(class='number')= row[1]
+            %td(class='number')= row[2]
+            %td(class='number')= row[3]
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td(class='number')
+            %b= @report.project_amount(project_id)
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td(class='number')
+          %b(style="color:red")= @report.total_amount
