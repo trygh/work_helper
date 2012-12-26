@@ -24,7 +24,7 @@
         - @page.user_weekly_stats.each do |user, minutes|
           %tr
             %td= link_to user.name, filter_task_reports_path(interval: 'week', user_id: user.id)
-            %td= min_show minutes
+            %td.number= min_show minutes
 
   .span4
     %table.table
