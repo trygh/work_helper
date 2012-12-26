@@ -29,7 +29,8 @@
               %ul.nav
                 %li= link_to "Dashboard", root_path
                 %li= link_to "Task Reports", task_reports_path
-                %li= link_to "Projects", projects_path
+                %li= link_to "Company", my_company_path
+                / %li= link_to "My Projects", my_projects_path
                 %li= link_to "Reports", reports_path
               %ul.login
                 Logged in as
@@ -41,7 +42,7 @@
               \#{link_to "Log In", new_user_session_path}
     .container
 
-      .row
+      .row-fluid
         .span12
           = flash_block
           = yield

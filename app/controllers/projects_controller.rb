@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!
+  before_filter :load_company
 
   # GET /projects
   # GET /projects.json
@@ -46,12 +47,13 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    @project.company = @company
 
     respond_to do |format|
       if @project.save
         @project.create_owner(current_user)
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
+        format.html { redirect_to my_company_path, notice: 'Project was successfully created.' }
+        format.json { render json: my_company_path, status: :created, location: @project }
       else
         format.html { render action: "new" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -82,8 +84,15 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to my_company_path }
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def load_company
+    @company = Company.find(params[:company_id])
+  end
+
 end

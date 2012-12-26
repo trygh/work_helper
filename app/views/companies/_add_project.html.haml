@@ -1,0 +1,14 @@
+#addProject.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3#myModalLabel
+      Add new project to #{@company.name}
+      #flash
+    = form_for :project, url: company_projects_path(@company.id), :html => { :class => 'form-horizontal' } do |f|
+      .modal-body
+        %p
+          = f.text_field :name, placeholder: "Project Name"
+        %p
+          = f.text_field :url, placeholder: "Project URL"
+      .modal-footer
+        = f.submit "Add project", :class => 'btn btn-primary'

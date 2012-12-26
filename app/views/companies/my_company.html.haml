@@ -1,0 +1,48 @@
+.row-fluid
+  .span12
+    - model_class = Company
+    .page-header
+      %h1= @company.name
+      %h5
+        / = link_to "Add new project", new_company_project_path(@company.id), class: 'btn btn-mini'
+        %a.btn.btn-mini{"data-toggle" => "modal", :href => "#addProject", :role => "button"} Add new project
+        / = link_to "Assign worker to company", new_company_project_path(@company.id), class: 'btn btn-mini'
+        %a.btn.btn-mini{"data-toggle" => "modal", :href => "#assignWorker", :role => "button"} Assign worker to company
+.row-fluid
+  .span12
+    .span6
+      %h4 Company Projects
+      %table.table.table-hover.table-condensed
+        %thead
+          %tr
+            %th Title
+            %th Project url
+            %th
+          %tbody
+            - @company.projects.each do |project|
+              %tr
+                %td= link_to project.name, company_project_path(@company, project)
+                %td= project.url
+                %td= link_to "Delete project", company_project_path(@company, project),
+                                                  method: :delete, data: { confirm: 'Are you sure?' }
+    .span6
+      %h4 Workers in #{@company.name} company
+      %table.table.table-hover.table-condensed
+        %thead
+          %tr
+            %th Name
+            %th Hourly rate
+            %th
+          %tbody
+            - @company.workers.each do |worker|
+              %tr
+                %td
+                  = worker.user.first_name
+                  = worker.user.last_name
+                %td
+                  = worker.hourly_rate
+                %td
+                  = link_to 'Dismiss'#, dsimiss_worker_path(worker.id)
+
+= render partial: "add_project"
+= render partial: "assign_worker"

@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!
 
   def index
     @companies = Company.all
@@ -10,11 +10,12 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def my_company
+    @company = Company.where(user_id: current_user).first
+  end
+
   def show
     @company = Company.find(params[:id])
-    @commentable = @company
-    @comments = @commentable.comments
-    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,6 +38,7 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(params[:company])
+    @company.user_id = current_user.id
 
     respond_to do |format|
       if @company.save

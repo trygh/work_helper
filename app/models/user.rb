@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   has_many :owned_projects, through: :participants, source: :project, conditions: 'participants.role_id = ' +
       Participant::Role::OWNER.to_s
 
+  #worker relatioships
+  has_many :workers, dependent: :destroy
+  has_many :companies, through: :workers
+
   def name
     "#{first_name} #{last_name}"
   end

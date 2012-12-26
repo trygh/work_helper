@@ -1,0 +1,14 @@
+#assignWorker.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3#myModalLabel
+      Assign worker to company
+      #flash
+    = form_for :worker, url: company_workers_path(@company.id), :html => { :class => 'form-horizontal' } do |f|
+      .modal-body
+        %p
+          = f.email_field :user_id, placeholder: "User's email"
+        %p
+          = f.select :buyer_id, Company.all.map(&:name), include_blank: "Select company"
+      .modal-footer
+        = f.submit "Assign worker", :class => 'btn btn-primary'

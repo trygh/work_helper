@@ -1,6 +1,8 @@
 Crm::Application.routes.draw do
 
   get "profile", to: "profile#index"
+  get "my_company", to: "companies#my_company"
+  get "my_projects", to: "projects#my_projects"
 
   get "profile/edit"
 
@@ -14,9 +16,7 @@ Crm::Application.routes.draw do
     end
   end
 
-  resources :projects do
-    resources :participants, controller: "projects/participants", only: [:create]
-  end
+
 
   devise_for :users
 
@@ -24,7 +24,14 @@ Crm::Application.routes.draw do
 
   resources :users
   resources :companies do
-    resources :comments
+    resources :projects do
+      resources :participants, controller: "projects/participants", only: [:create]
+    end
+    resources :workers, controller: "companies/workers", only: [:create]
+  end
+
+  resources :projects do
+    resources :participants, controller: "projects/participants", only: [:create]
   end
 
   resources :reports, only: :index do

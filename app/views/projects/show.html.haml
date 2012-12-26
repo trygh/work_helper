@@ -1,14 +1,15 @@
-- model_class = Project
-.page-header
-  %h1
-    =t '.title', :default => @project.name
-  %p= link_to @project.url, @project.url, target: "_blank"
+.row-fluid
+  - model_class = Project
+  .page-header
+    %h1
+      =t '.title', :default => @project.name
+    %p= link_to @project.url, @project.url, target: "_blank"
 
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn'
-  %a.btn{"data-toggle" => "modal", :href => "#addPerson", :role => "button"} Add person to project
+  .form-actions
+    = link_to t('.back', :default => t("helpers.links.back")), company_projects_path, :class => 'btn'
+    %a.btn{"data-toggle" => "modal", :href => "#addPerson", :role => "button"} Add person to project
 
-.row
+.row-fluid
   .span8
     %h4 Reports for this project
     %table.table.table-hover
@@ -36,7 +37,7 @@
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %h3#myModalLabel
-      Add person to #{@project.name}
+      Add person to #{@project.name} project
       #flash
     = form_for :participant, url: project_participants_path(@project.id), :html => { :class => 'form-horizontal' } do |f|
       .modal-body
