@@ -63,7 +63,7 @@
         - @page.project_weekly_stats.each do |project, minutes|
           %tr
             %td= link_to project.name, filter_task_reports_path(interval: 'week', project_id: project.id)
-            %td= min_show minutes
+            %td.number= min_show minutes
 
   .span4
     %table.table
