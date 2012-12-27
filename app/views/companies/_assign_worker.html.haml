@@ -10,7 +10,7 @@
       = form_for :worker, url: assign_worker_path, :html => { :class => 'form-horizontal' } do |f|
         .modal-body
           %p
-            = f.collection_select :user_id, @your_workers.all, :user_id, :user_id, prompt: "Select user"
+            = f.collection_select :user_id, @your_workers.all, :user_id, :user_name, prompt: "Select user"
           %p
             = f.collection_select :buyer_id, Company.all, :id, :name, prompt: "Select company"
           %p

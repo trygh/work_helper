@@ -28,7 +28,10 @@ Crm::Application.routes.draw do
     resources :projects do
       resources :participants, controller: "projects/participants", only: [:create]
     end
-    resources :workers, controller: "companies/workers", only: [:create]
+    resources :workers
+    member do
+      delete :dismiss_worker
+    end
   end
 
   resources :projects do

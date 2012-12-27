@@ -24,7 +24,7 @@
                 %td= link_to "Delete project", company_project_path(@company, project),
                                                   method: :delete, data: { confirm: 'Are you sure?' }
     .span6
-      %h4 Workers in #{@company.name} company
+      %h4 Contracted workers in #{@company.name} company
       %table.table.table-hover.table-condensed
         %thead
           %tr
@@ -38,9 +38,10 @@
                   = worker.user.first_name
                   = worker.user.last_name
                 %td
-                  = worker.hourly_rate
+                  = number_to_currency worker.hourly_rate
                 %td
-                  = link_to 'Dismiss'#, dsimiss_worker_path(worker.id)
+                  = link_to 'Dismiss', dismiss_worker_company_path(worker),
+                      method: :delete, data: { confirm: 'Are you sure?' }
 
 = render partial: "add_project"
 = render partial: "assign_worker"

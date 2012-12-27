@@ -8,6 +8,12 @@
   .form-actions
     = link_to t('.back', :default => t("helpers.links.back")), company_projects_path, :class => 'btn'
     %a.btn{"data-toggle" => "modal", :href => "#addPerson", :role => "button"} Add person to project
+.row-fluid
+  .span12
+    %h5 Workers in this project:
+    - for worker in @project.participants
+      %span
+        = worker.user.first_name + ' ' + worker.user.last_name + ' | '
 
 .row-fluid
   .span8

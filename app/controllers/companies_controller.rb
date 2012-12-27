@@ -16,9 +16,8 @@ class CompaniesController < ApplicationController
   end
 
   def assign_worker
-    @seller = Company.where('id = ?', params[:worker][:seller_id]).first
-    @buyer = Company.where('id = ?', params[:worker][:buyer_id]).first
-    worker_owner = Worker.where(seller_id: @seller, buyer_id: @seller)
+    @company = Company.where(id: params[:seller_id])
+    worker_owner = Worker.where(seller_id: params[:seller_id], buyer_id: params[:seller_id])
 
     if worker_owner.present? || @company.nil?
       create_worker
@@ -29,13 +28,31 @@ class CompaniesController < ApplicationController
   end
 
   def create_worker
-    worker = Worker.new(user_id: params[:worker][:user_id], seller_id: params[:seller_id],
-                        buyer_id: params[:worker][:buyer_id], hourly_rate: params[:worker][:hourly_rate])
+    @buyer = Company.where(id: params[:worker][:buyer_id])
+    contractor = Worker.where(user_id: params[:worker][:user_id], seller_id: params[:seller_id],
+                              buyer_id: params[:worker][:buyer_id]).first
 
-    if worker.save
-      flash[:notice] = "Invitation successfully sent"
+    if contractor.nil?
+      worker = Worker.new(user_id: params[:worker][:user_id], seller_id: params[:seller_id],
+                              buyer_id: params[:worker][:buyer_id], hourly_rate: params[:worker][:hourly_rate])
+      if worker.save
+        flash[:notice] = "Worker successfully assigned to #{@buyer.name} company"
+      else
+        flash[:notice] = "Something went wrong"
+      end
     else
-      flash[:notice] = "Something went wrong"
+      contractor.update_attributes(hourly_rate: params[:worker][:hourly_rate])
+      flash[:notice] = "Worker at #{@buyer.name} company successfully updated"
+    end
+  end
+
+  def dismiss_worker
+    @worker = Worker.find(params[:id])
+    @worker.destroy
+
+    respond_to do |format|
+      format.html { redirect_to my_company_path, notice: 'Worker has been dismissed from your company' }
+      format.json { head :no_content }
     end
   end
 
