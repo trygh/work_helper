@@ -7,7 +7,7 @@ class TaskReportsController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @task_reports = current_user.task_reports.where('reported_for >= ?', 2.weeks.ago).order('reported_for desc')
+    @task_reports = current_user.task_reports.where('reported_for >= ?', 2.weeks.ago).order('reported_for desc, created_at desc')
     @hours, @minutes = @task_reports.sum(:minutes).divmod(60)
 
     respond_to do |format|
