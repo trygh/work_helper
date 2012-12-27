@@ -3,6 +3,7 @@ Crm::Application.routes.draw do
   get "profile", to: "profile#index"
   get "my_company", to: "companies#my_company"
   get "my_projects", to: "projects#my_projects"
+  post "assign_worker", to: "companies#assign_worker"
 
   get "profile/edit"
 

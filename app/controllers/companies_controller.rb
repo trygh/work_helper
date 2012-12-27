@@ -12,6 +12,31 @@ class CompaniesController < ApplicationController
 
   def my_company
     @company = Company.where(user_id: current_user).first
+    @your_workers = Worker.where('buyer_id & seller_id = ?', @company)
+  end
+
+  def assign_worker
+    @seller = Company.where('id = ?', params[:worker][:seller_id]).first
+    @buyer = Company.where('id = ?', params[:worker][:buyer_id]).first
+    worker_owner = Worker.where(seller_id: @seller, buyer_id: @seller)
+
+    if worker_owner.present? || @company.nil?
+      create_worker
+    else
+      flash[:error] = "You are not owner for this user"
+    end
+    redirect_to my_company_path
+  end
+
+  def create_worker
+    worker = Worker.new(user_id: params[:worker][:user_id], seller_id: params[:seller_id],
+                        buyer_id: params[:worker][:buyer_id], hourly_rate: params[:worker][:hourly_rate])
+
+    if worker.save
+      flash[:notice] = "Invitation successfully sent"
+    else
+      flash[:notice] = "Something went wrong"
+    end
   end
 
   def show

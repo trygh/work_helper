@@ -13,6 +13,9 @@ ActiveAdmin.register TaskReport do
       row :user
       row :minutes
       row :project
+      row :url do |task|
+        link_to task.url, task.url, target: "_blank"
+      end
       row :reported_for
       row :content
     end

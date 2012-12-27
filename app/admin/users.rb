@@ -19,7 +19,7 @@ ActiveAdmin.register User do
     panel "Task Reports" do
       table_for user.task_reports do
         column "title" do |report|
-          report.title
+          link_to report.title, admin_task_report_path(report)
         end
         column "reported for" do |report|
           report.reported_for

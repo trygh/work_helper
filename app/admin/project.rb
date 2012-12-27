@@ -9,16 +9,24 @@ ActiveAdmin.register Project do
   show do |ad|
     attributes_table do
       row :name
-      row :url
+      row :url do |project|
+        link_to project.url, project.url, target: "_blank"
+      end
       row :created_at
+      row :company
     end
     panel "Participants" do
       table_for project.participants do
         column "First Name" do |participant|
-          participant.user.first_name
+          span do
+            link_to participant.user.first_name, admin_user_path(participant.user)
+          end
+          span do
+            link_to participant.user.last_name, admin_user_path(participant.user)
+          end
         end
-        column "Last Name" do |participant|
-          participant.user.last_name
+        column "Email" do |participant|
+          link_to participant.user.email, admin_user_path(participant.user)
         end
         column "Role" do |participant|
           Participant::ROLE_BY_ID[participant.role_id]

@@ -4,9 +4,7 @@
     .page-header
       %h1= @company.name
       %h5
-        / = link_to "Add new project", new_company_project_path(@company.id), class: 'btn btn-mini'
         %a.btn.btn-mini{"data-toggle" => "modal", :href => "#addProject", :role => "button"} Add new project
-        / = link_to "Assign worker to company", new_company_project_path(@company.id), class: 'btn btn-mini'
         %a.btn.btn-mini{"data-toggle" => "modal", :href => "#assignWorker", :role => "button"} Assign worker to company
 .row-fluid
   .span12
@@ -22,7 +20,7 @@
             - @company.projects.each do |project|
               %tr
                 %td= link_to project.name, company_project_path(@company, project)
-                %td= project.url
+                %td= link_to "link", project.url, target: "_blank", title: project.url unless project.url.blank?
                 %td= link_to "Delete project", company_project_path(@company, project),
                                                   method: :delete, data: { confirm: 'Are you sure?' }
     .span6
