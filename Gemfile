@@ -7,6 +7,7 @@ gem 'rails', '3.2.9'
 
 gem 'mysql2'
 gem 'haml-rails'
+gem 'prawn', :git => 'git://github.com/prawnpdf/prawn.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
