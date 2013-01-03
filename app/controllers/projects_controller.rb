@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @reports = TaskReport.where(project_id: @project.id)
     @hours, @minutes = @reports.sum(:minutes).divmod(60)
+    @workers = Worker.where(buyer_id: @company).uniq
 
     respond_to do |format|
       format.html # show.html.erb
@@ -94,5 +95,4 @@ class ProjectsController < ApplicationController
   def load_company
     @company = Company.find(params[:company_id])
   end
-
 end

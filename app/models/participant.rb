@@ -1,7 +1,8 @@
 class Participant < ActiveRecord::Base
-  attr_accessible :ext_hrate, :project_id, :role_id, :state, :user_id
+  attr_accessible :ext_hrate, :project_id, :role_id, :state, :user_id, :worker_id
 
   belongs_to :user
+  belongs_to :worker
   belongs_to :project
 
   ROLE = { 'owner' => 100, 'manager' => 80, 'agent' => 70, 'worker' => 50 }
