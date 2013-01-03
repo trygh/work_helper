@@ -5,11 +5,9 @@ class ProjectsSummaryPdf < Prawn::Document
     @report = report
     @view = view
     line_items
-
   end
 
   def line_items
-
       move_down 20
       table(line_projects_summary, {width: 535}) do
           row(0).font_style = :bold
@@ -38,7 +36,10 @@ class ProjectsSummaryPdf < Prawn::Document
         result << [{content: '', colspan: 4, content: "Subtotal:"}, {content: "#{@report.project_amount(project_id)}", align: :right, font_style: :bold}]
     end
 
-    result << [{content: '', colspan: 4, content: "Total:"}, { content: "#{@report.total_amount}", text_color: "1455C0", align: :right, font_style: :bold} ]
+    result << [{content: '', colspan: 4, content: "Total:"},
+               {content: @report.total_amount.round(2).to_s,
+                text_color: "1455C0",
+                align: :right, font_style: :bold}]
 
     result
 
@@ -50,9 +51,7 @@ class ProjectsSummaryPdf < Prawn::Document
 
       start_new_page()
 
-      text "Project Details:", align: :center, size: 25
-
-      text @report.project_name(project_id), align: :center, size: 20
+      text "Project " + @report.project_name(project_id), align: :center, size: 25
 
       result = []
       result << ["Date", "Hours", "Developer", "Task"]

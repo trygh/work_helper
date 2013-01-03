@@ -1,6 +1,19 @@
 .page-header
   %h1 Projects Summary
 .row
+  = form_tag({}, method: :get) do
+    .controls
+      = select_tag 'p', options_from_collection_for_select(@form.all_projects, :id, :name, @form.selected_project_ids),
+        :multiple => true, size: 7, class: 'span3'
+      = select_month @form.start_date, {:add_month_numbers => true}, name: 'm', class: 'top'
+      = select_year @form.start_date, {}, name: 'y', class: 'top'
+    .controls
+      = submit_tag "Show", class: 'btn btn-primary'
+
+.row-fluid
+  =link_to "PDF", url_for(params.merge(format: "pdf")), class: 'pull-right'
+
+.row
   %table.table.table-hover.center
     %thead
       %tr
@@ -34,5 +47,4 @@
         %td
         %td
         %td(class='number')
-          %b(style="color:red")= @report.total_amount
-=link_to "Print Report", projects_summary_reports_path(format: "pdf")
+          %b(style="color:red")= @report.total_amount.round(2)

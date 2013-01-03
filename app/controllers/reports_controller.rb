@@ -5,14 +5,14 @@ class ReportsController < ApplicationController
   end
 
   def projects_summary
-    project_ids = current_user.owned_project_ids
+    @form = ProjectsReportForm.new(current_user, params)
 
-    if project_ids.blank?
+    if @form.selected_project_ids.blank?
       redirect_to reports_path, notice: "you do not have any owned projects"
       return
     end
 
-    @report = ProjectsReport.new(project_ids, Date.today.beginning_of_month)
+    @report = ProjectsReport.new(@form.selected_project_ids, @form.start_date)
 
     respond_to do |format|
       format.html
