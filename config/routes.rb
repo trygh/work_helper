@@ -18,9 +18,8 @@ Crm::Application.routes.draw do
     resources :participants, controller: "projects/participants", only: [:create]
   end
 
-  devise_for :users
-
-  #devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
+                     controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :users
   resources :companies do
@@ -32,12 +31,6 @@ Crm::Application.routes.draw do
       get :projects_summary
     end
   end
-
-  devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
-
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
