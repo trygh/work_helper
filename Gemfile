@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.10'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql2'
 gem 'haml-rails'
 gem 'prawn', :git => 'git://github.com/prawnpdf/prawn.git'
@@ -43,21 +40,9 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 group :test do
   gem "factory_girl_rails", :require => nil
 end
-
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
