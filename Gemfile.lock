@@ -1,6 +1,17 @@
+GIT
+  remote: git://github.com/prawnpdf/prawn.git
+  revision: 9c937d7be3fea313474b9301aa2c9539b2249973
+  specs:
+    prawn (1.0.0.rc1)
+      afm
+      pdf-reader (>= 0.9.0, < 2.0)
+      ruby-rc4
+      ttfunk (~> 1.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (1.0.2)
     actionmailer (3.2.10)
       actionpack (= 3.2.10)
       mail (~> 2.4.4)
@@ -41,6 +52,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
+    afm (0.2.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -102,6 +114,7 @@ GEM
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
+    hashery (2.1.0)
     highline (1.6.15)
     hike (1.2.1)
     i18n (0.6.1)
@@ -148,6 +161,10 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     orm_adapter (0.4.0)
+    pdf-reader (1.2.0)
+      Ascii85 (~> 1.0.0)
+      hashery (~> 2.0)
+      ruby-rc4
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -193,6 +210,7 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    ruby-rc4 (0.1.5)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.3)
@@ -213,6 +231,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.0.3)
     twitter-bootstrap-rails (2.1.6)
       actionpack (>= 3.1)
       execjs
@@ -242,6 +261,7 @@ DEPENDENCIES
   jquery-ui-rails
   less-rails
   mysql2
+  prawn!
   rails (= 3.2.10)
   rspec-rails
   rvm-capistrano
