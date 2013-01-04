@@ -25,6 +25,14 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def is_owner_for(company)
+    unless company.nil?
+      return company.user_id == self.id
+    else
+      return false
+    end
+  end
+
   after_create do
     prof = DevProfile.new
     prof.user = self

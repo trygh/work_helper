@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_ownership, only: %w(show edit update delete_benefits)
 
   def index
     @companies = Company.all
