@@ -25,6 +25,7 @@ FactoryGirl.define do
 
   factory :user do
     username { generate(:username) }
+    password "test1234"
     email { generate(:email) }
     first_name { generate(:first_name) }
     last_name { generate(:last_name) }

@@ -7,6 +7,24 @@ Crm::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, :path => "auth",
+             :path_names => {:sign_in => 'login', :sign_out => 'logout', :password => 'secret',
+                             :confirmation => 'verification', :unlock => 'unblock',
+                             :registration => 'register', :sign_up => 'cmon_let_me_in'},
+             skip: :registrations
+
+  # Disable user destroy
+  # https://github.com/plataformatec/devise/wiki/How-To%3a-Disable-user-from-destroying-his-account
+  devise_scope :user do
+    resource :registration,
+             only: [:new, :create, :edit, :update],
+             path: 'users',
+             path_names: { new: 'sign_up' },
+             controller: 'devise/registrations',
+             as: :user_registration do
+      get :cancel
+    end
+  end
 
   resources :task_reports do
     collection do
@@ -17,10 +35,6 @@ Crm::Application.routes.draw do
   resources :projects do
     resources :participants, controller: "projects/participants", only: [:create]
   end
-
-  devise_for :users
-
-  #devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   resources :users
   resources :companies do
@@ -33,7 +47,6 @@ Crm::Application.routes.draw do
     end
   end
 
-  devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

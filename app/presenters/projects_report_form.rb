@@ -8,7 +8,7 @@ class ProjectsReportForm
     @params = params
 
     begin
-      @start_date = Date.new(params[:y].to_i, params[:m].to_i, 1)
+      @start_date = Date.new(params[:y].to_i, params[:m].to_i, 1) if params[:y].present? && params[:m].present?
     rescue ArgumentError
     end
 
