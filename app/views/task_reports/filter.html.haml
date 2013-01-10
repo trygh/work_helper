@@ -15,10 +15,23 @@
   .row
     User:
     %b= @page.user.name
+  .row
+    = link_to "Prev Month", params.update(m: @page.prev_month.month, y: @page.prev_month.year)
+    = form_tag({}, method: :get) do
+      = hidden_field_tag :user_id, @page.user.id
+      .controls
+        = select_month @page.start, {:add_month_numbers => true}, name: 'm', class: 'top'
+        = select_year @page.start, {}, name: 'y', class: 'top'
+      .controls
+        = submit_tag "Show", class: 'btn btn-primary'
 
 .row.formats
   Format:
   = link_to "CSV", params.merge(format: :csv)
+
+.row
+  %b Total
+  = min_show @page.total_minutes
 
 %table.table.table-hover.center
   %thead
