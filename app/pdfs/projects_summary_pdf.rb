@@ -33,7 +33,10 @@ class ProjectsSummaryPdf < Prawn::Document
         result << [{content: row[0], colspan: 2, align: :left, padding: [5, 5, 5, 100]}, row[1], row[2], row[3] ]
       end
 
-        result << [{content: '', colspan: 4, content: "Subtotal:"}, {content: "#{@report.project_amount(project_id)}", align: :right, font_style: :bold}]
+      unless @report.projects.size == 1
+        result << [{content: '', colspan: 4, content: "Subtotal:"},
+                   {content: "#{@report.project_amount(project_id).round(2)}", align: :right, font_style: :bold}]
+      end
     end
 
     result << [{content: '', colspan: 4, content: "Total:"},
@@ -42,7 +45,6 @@ class ProjectsSummaryPdf < Prawn::Document
                 align: :right, font_style: :bold}]
 
     result
-
   end
 
   def draw_projects_details
