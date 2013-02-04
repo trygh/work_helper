@@ -14,7 +14,6 @@ class TaskReportFilterPage
                TaskReport.where(project_id: @project_id)
              else
                TaskReport.where(project_id: @project_ids)
-
              end
 
     if @user_id
@@ -32,6 +31,7 @@ class TaskReportFilterPage
       @end = @start.end_of_month
     else
       @end = Time.now
+      @interval_filter = params[:interval]
 
       case params[:interval]
         when 'week'
@@ -54,6 +54,22 @@ class TaskReportFilterPage
 
   def user
     User.find @user_id
+  end
+
+  def filters
+    h = {}
+
+    h[:user_id] = @user_id if @user_filter
+    h[:project_id] = @project_id if @project_filter
+
+    if @interval_filter
+      h[:interval] = @interval_filter
+    else
+      h[:m] = @start.month
+      h[:y] = @start.year
+    end
+
+    h
   end
 
   def prev_month
