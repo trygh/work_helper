@@ -24,7 +24,7 @@ class ProjectsSummaryPdf < Prawn::Document
 
     text "Projects Summary", align: :center, size: 25
 
-    result = [["Project", "Developer", "Total Hours", "Hourly Rates", "Total"]]
+    result = [["Project", "Developer", "Total Hours", "Hourly Rate", "Total"]]
 
     @report.projects_summary.map do |project_id, stats|
       result << [{content: @report.project_name(project_id), font_style: :bold, colspan: 5}]
